@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using CQRSDemo.Features.Orders.Queries;
+using MediatR;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -11,6 +13,19 @@ namespace CQRSDemo.Controllers
     [ApiController]
     public class OrderController : ControllerBase
     {
+        private readonly IMediator _mediator;
 
+        public OrderController(IMediator mediator)
+        {
+            _mediator = mediator;
+        }
+
+
+        [HttpGet]
+        [Route("GetOrders")]
+        public async Task<IActionResult> GetOrders()
+        {
+            return Ok(await _mediator.Send(new GetAllOrdersQuery()));
+        }
     }
 }
