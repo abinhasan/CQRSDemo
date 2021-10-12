@@ -20,9 +20,9 @@ namespace CQRSDemo.Features.Orders.Queries
                 _orderService = orderService;
             }
 
-            public Task<IEnumerable<Order>> Handle(GetAllOrdersQuery request, CancellationToken cancellationToken)
+            public async Task<IEnumerable<Order>> Handle(GetAllOrdersQuery request, CancellationToken cancellationToken)
             {
-                throw new NotImplementedException();
+                return await _orderService.GetOrdersList();
             }
 
         }

@@ -1,5 +1,6 @@
 ﻿using CQRSDemo.DataContext;
 using CQRSDemo.Models;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,9 +17,10 @@ namespace CQRSDemo.Services
             _context = context;
         }
 
-        public Task<IEnumerable<Order>> GetOrdersList()
+        public async Task<IEnumerable<Order>> GetOrdersList()
         {
-            throw new NotImplementedException();
+            return await _context.Order
+                .ToListAsync();
         }
     }
 }
