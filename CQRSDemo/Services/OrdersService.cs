@@ -22,5 +22,11 @@ namespace CQRSDemo.Services
             return await _context.Order
                 .ToListAsync();
         }
+
+        public async Task<Order> GetOrderById(int orderId)
+        {
+            return await _context.Order
+                .FirstOrDefaultAsync(x => x.OrderId == orderId);
+        }
     }
 }

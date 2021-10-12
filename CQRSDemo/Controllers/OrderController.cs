@@ -27,5 +27,12 @@ namespace CQRSDemo.Controllers
         {
             return Ok(await _mediator.Send(new GetAllOrdersQuery()));
         }
+
+        [HttpGet]
+        [Route("GetOrderDetails/{orderId}")]
+        public async Task<IActionResult> GetOrderDetails(int orderId)
+        {
+            return Ok(await _mediator.Send(new GetOrderByIdQuery() { OrderId = orderId }));
+        }
     }
 }
