@@ -8,5 +8,6 @@ namespace CQRSDemo.Services
     {
         Task<IEnumerable<Order>> GetOrdersList();
         Task<Order> GetOrderById(int orderId);
+        Task<Order> CreateOrder(Order order);
     }
 }

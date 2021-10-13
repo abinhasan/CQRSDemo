@@ -1,4 +1,5 @@
-﻿using CQRSDemo.Features.Orders.Queries;
+﻿using CQRSDemo.Features.Orders.Commands;
+using CQRSDemo.Features.Orders.Queries;
 using MediatR;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -33,6 +34,14 @@ namespace CQRSDemo.Controllers
         public async Task<IActionResult> GetOrderDetails(int orderId)
         {
             return Ok(await _mediator.Send(new GetOrderByIdQuery() { OrderId = orderId }));
+        }
+
+
+        [HttpPost]
+        [Route("Create")]
+        public async Task<IActionResult> Create(CreateOrderCommand command)
+        {
+            return Ok(await _mediator.Send(command));
         }
     }
 }

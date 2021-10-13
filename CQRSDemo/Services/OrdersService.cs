@@ -28,5 +28,12 @@ namespace CQRSDemo.Services
             return await _context.Order
                 .FirstOrDefaultAsync(x => x.OrderId == orderId);
         }
+
+        public async Task<Order> CreateOrder(Order order)
+        {
+            _context.Order.Add(order);
+            await _context.SaveChangesAsync();
+            return order;
+        }
     }
 }

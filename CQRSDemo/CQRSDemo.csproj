@@ -15,9 +15,5 @@
     </PackageReference>
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Features\Orders\Commands\" />
-  </ItemGroup>
-
 
 </Project>
